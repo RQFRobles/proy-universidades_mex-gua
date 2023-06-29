@@ -22,7 +22,7 @@ Organizations:
         OrdererEndpoints:
             - orderer.universidades.com:7050
 
-    - &Madrid
+    - &Mexico
         Name: MexicoMSP
         ID: MexicoMSP
 
@@ -41,7 +41,7 @@ Organizations:
                 Type: Signature
                 Rule: "OR('MexicoMSP.peer')"
 
-    - &Bogota
+    - &Guatemala
         Name: GuatemalaMSP
         ID: GuatemalaMSP
 
@@ -52,39 +52,15 @@ Organizations:
                 Rule: "OR('GuatemalaMSP.admin', 'GuatemalaMSP.peer', 'GuatemalaMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('BogotaMSP.admin', 'BogotaMSP.client')"
+                Rule: "OR('GuaremalaMSP.admin', 'GuatemalaMSP.client')"
             Admins:
                 Type: Signature
                 Rule: "OR('GuatemalaMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('BogotaMSP.peer')"
+                Rule: "OR('GuatemalaMSP.peer')"
 
                 ---
-################################################################################
-#   Section: Organizations
-################################################################################
-Organizations:
-    - &Berlin
-        Name: BerlinMSP
-        ID: BerlinMSP
-        MSPDir: ../organizations/peerOrganizations/berlin.universidades.com/msp
-        Policies:
-            Readers:
-                Type: Signature
-                Rule: "OR('BerlinMSP.admin', 'BerlinMSP.peer', 'BerlinMSP.client')"
-            Writers:
-                Type: Signature
-                Rule: "OR('BerlinMSP.admin', 'BerlinMSP.client')"
-            Admins:
-                Type: Signature
-                Rule: "OR('BerlinMSP.admin')"
-            Endorsement:
-                Type: Signature
-                Rule: "OR('BerlinMSP.peer')"
-
-
-
 ################################################################################
 #   SECTION: Capabilities
 ################################################################################
@@ -186,8 +162,7 @@ Profiles:
         Application:
             <<: *ApplicationDefaults
             Organizations:
-                - *Madrid
-                - *Bogota
-                - *Berlin
+                - *Mexico
+                - *Guatemala
             Capabilities: *ApplicationCapabilities
 
